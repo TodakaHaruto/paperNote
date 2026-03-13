@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
+<!--CSS-->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/login/login.css}">
+<!--javascript-->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.min.js}"></script>
+<title th:text="#{user.login.title}"></title>
+</head>
+<body class="bg-light">
+	<div class="text-center mx-5">
+		<form method="post" th:action="@{/login}" class="form-login">
+			<h2 th:text="#{user.login.title}"></h2>
+			<!--ユーザID-->
+			<div class="form-group">
+				<label for="userId" class="visually-hidden" th:text="#{userId}"></label>
+				<input type="text" class="form-control mb-3" th:placeholder="#{userId}" name="userId">
+			</div>
+			
+			<!--パスワード-->
+			<div class="form-group">
+				<label for="password" class="visually-hidden" th:text="#{password}"></label>
+				<input type="password" class="form-control mb-3" th:placeholder="#{password}" name="password">
+			</div>
+			
+			<input type="submit" th:value="#{user.login.btn}" class="btn btn-primary"/>
+		</form>
+		<a th:href="@{/user/signup}" th:text="#{user.login.signup}"></a>
+	</div>
+	
+</body>
+</html>
