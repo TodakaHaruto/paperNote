@@ -1,0 +1,1 @@
+INSERT INTO users VALUES('001@example.com', 'password', 'test_user', '2003/04/22', 1)
