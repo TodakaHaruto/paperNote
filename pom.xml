@@ -125,6 +125,24 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>4.0.1</version>
 		</dependency>
+		<!-- MyBatis -->
+		<dependency>
+		    <groupId>org.mybatis.spring.boot</groupId>
+		    <artifactId>mybatis-spring-boot-starter</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+		<!-- model mapper -->
+		<dependency>
+		    <groupId>org.modelmapper</groupId>
+		    <artifactId>modelmapper</artifactId>
+		    <version>3.2.6</version>
+		</dependency>
+		<!-- postgres -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
