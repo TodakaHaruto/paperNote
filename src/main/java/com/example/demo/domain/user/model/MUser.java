@@ -1,0 +1,14 @@
+package com.example.demo.domain.user.model;
+
+import java.util.Date;
+
+import lombok.Data;
+
+@Data
+public class MUser {
+	private String userId;
+	private String password;
+	private String userName;
+	private Date birthday;
+	private int gender;
+}
