@@ -66,6 +66,7 @@ public class SignupController {
 		//ユーザ登録
 		userService.signup(user);
 		
+		/* ログイン画面にリダイレクト */
 		return "redirect:/login";
 		
 	}
