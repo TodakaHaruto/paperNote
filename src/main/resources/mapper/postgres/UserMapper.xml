@@ -20,4 +20,15 @@
 			#{gender}
 			)
 	</insert>
+	
+	
+	<!-- ログインユーザ情報取得 -->
+	<select id="findLoginUser" resultType="com.example.demo.domain.user.model.MUser">
+		select 
+			*
+		from
+			users
+		where
+			user_id = #{userId}
+	</select>
 </mapper>

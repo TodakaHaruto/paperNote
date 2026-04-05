@@ -1,32 +1,47 @@
 package com.example.demo.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+
+
 
 //springの設定クラス
 @Configuration
 public class SecurityConfig {
 
-    // セキュリティの対象外を設定
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+    
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (WebSecurity web) -> web.ignoring()
-                .requestMatchers("/webjars/**", "/css/**", "/js/**");
+    public DaoAuthenticationProvider authenticationProvider() {
+    	DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
+    	provider.setPasswordEncoder(passwordEncoder);
+    	return provider;
     }
+	
+	
+    
     
     //セキュリティの設定
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //http:セキュリティ設定を書くためのオブジェクト
     	http
+    		.authenticationProvider(authenticationProvider())
     		.authorizeHttpRequests(auth -> auth
-    				.requestMatchers("/login").permitAll()
-    				.requestMatchers("/user/signup").permitAll()
-    				.anyRequest().authenticated() //anyRequest:それ以外のリクエストには authenticated:ログイン済みであることを要求
-    				)
+    				.requestMatchers("/login", "/user/signup", "/webjars/**", "/css/**", "/js/**").permitAll() //セキュリティの対象外を設定
+    				.anyRequest().authenticated()
+    		)
     		.formLogin(form -> form
     				.loginProcessingUrl("/login")
     		        .loginPage("/login")
@@ -35,9 +50,15 @@ public class SecurityConfig {
     		        .passwordParameter("password")
     		        .defaultSuccessUrl("/user/success", true)
     		        .permitAll()
-    		    );
+    		    )
+    		.logout(logout -> logout
+    				.logoutSuccessUrl("/logout?logout")
+    				.permitAll()
+    				);
     	http.csrf(csrf -> csrf.disable());
     	return http.build();
     }
     
 }
+
+
