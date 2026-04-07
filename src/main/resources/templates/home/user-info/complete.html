@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layoutLogin/layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--CSS-->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/user/signup.css}">
+<!--javascript-->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/5.3.8/js/bootstrap.min.js}"></script>
+
+<title th:text="#{user.signup.title}"></title>
+</head>
+<body class="bg-light">
+	<div layout:fragment="content">
+	<form id="signup-form" method="post" th:action="@{/logout}" class="form-signup" >
+		<h2>更新が完了しました</h2>
+		
+		<!--マイページへ遷移-->
+		<input type="submit" th:value="マイページに戻る" class="btn btn-primary w-100 mt-3">
+	</form>
+	</div>
+
+</body>
+</html>

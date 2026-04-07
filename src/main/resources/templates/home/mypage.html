@@ -9,6 +9,47 @@
 		<div class="header border-bottom">
 			<h1 class="h2">マイページ</h1>
 		</div>
+		<div class="mx-5 px-4">
+			<p class="h4 pt-3">登録情報</p>
+			<table class="table table-striped table-bordered">
+				<tbody>
+					<tr>
+						<th class="w-25">ユーザID</th>
+						<td th:text="${loginUser.userId}"></td>
+					</tr>
+					<tr>
+						<th class="w-25">パスワード</th>
+						<td>********</td>
+					</tr>
+					<tr>
+						<th class="w-25">ユーザ名</th>
+						<td th:text="${loginUser.userName}"></td>
+					</tr>
+					<tr>
+						<th class="w-25">誕生日</th>
+						<td th:text="${#dates.format(loginUser.birthday, 'yyyy/MM/dd')}"></td>
+					</tr>
+					<tr>
+						<th class="w-25">性別</th>
+						<td th:text="${loginUser.gender == 1 ? '男性' : '女性'}"></td>
+					</tr>
+				</tbody>
+			</table>
+		
+			<form id="update" method="post" th:action="@{/home/user-info/update}" class="form-signup text-center">
+				<!--ユーザID-->
+				<input type="hidden" name="userId" th:value="${loginUser.userId}" />
+				<!--ユーザ名-->
+				<input type="hidden" name="userName" th:value="${loginUser.userName}"/>
+				<!--誕生日-->
+				<input type="hidden" name="birthday" th:value="${#dates.format(loginUser.birthday, 'yyyy/MM/dd')}"  />
+				<!--性別-->
+				<input type="hidden" name="gender" th:value="${loginUser.gender}" >
+				<!--変更画面に遷移-->
+				<button name="display" type="submit"  class="btn btn-primary w-20 mt-3">登録情報を変更</button>
+			</form>
+		</div>
+		
 	</div>
 </body>
 </html>

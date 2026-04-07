@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.repository.query.Param;
 
 import com.example.demo.domain.user.model.MUser;
 
@@ -15,4 +16,14 @@ public interface UserMapper {
 	/* ログインユーザ取得 */
 	public MUser findLoginUser(String userId);
 
+	
+	/* ユーザ更新(パスワード更新なし) */
+	public void updateOne(@Param("userId") String userId,
+							@Param("newUserId") String newUserId,
+							@Param("password") String password,
+							@Param("userName") String userName,
+							@Param("birthday") String birthday,
+							@Param("gender") int gender);
+	
+	
 }

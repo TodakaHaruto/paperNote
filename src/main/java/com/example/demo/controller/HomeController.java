@@ -35,7 +35,9 @@ public class HomeController {
 
 	//マイページ
 	@GetMapping("/mypage")
-	public String getMypage() {
+	public String getMypage(@AuthenticationPrincipal org.springframework.security.core.userdetails.User loginUser, Model model) {
+		MUser user = userService.getLoginUser(loginUser.getUsername());
+		model.addAttribute("loginUser", user);
 		//マイページを表示
 		return "/home/mypage";
 	}
