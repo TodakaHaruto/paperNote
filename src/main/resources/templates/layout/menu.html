@@ -3,12 +3,18 @@
 <head>
 </head>
 <body>
-	<nav th:fragment="menu" class="bg-light">
-		<ul class="nav nav-pills nav-stacked">
+	<nav th:fragment="menu" class="bg-light mt-3">
+		<ol class="nav flex-column">
 			<li role="presentation">
-				<a class="nav-link" th:href="@{'/user/success'}"> ログインテスト </a>
+				<a class="nav-link" th:href="@{'/home/home'}"> 読んだ論文 </a>
 			</li>
-		</ul>
+			<li>
+				<a class="nav-link" th:href="@{'/home/toread'}">読むべき論文</a>
+			</li>
+			<li>
+				<a class="nav-link" th:href="@{'/home/mypage'}">マイページ</a>
+			</li>
+		</ol>
 
 	</nav>
 </body>

@@ -48,7 +48,7 @@ public class SecurityConfig {
     		        .failureUrl("/login?error")
     		        .usernameParameter("userId")
     		        .passwordParameter("password")
-    		        .defaultSuccessUrl("/user/success", true)
+    		        .defaultSuccessUrl("/home/home", true)
     		        .permitAll()
     		    )
     		.logout(logout -> logout
@@ -56,7 +56,7 @@ public class SecurityConfig {
     				.logoutSuccessUrl("/login?logout")
     				.permitAll()
     				);
-    	http.csrf(csrf -> csrf.disable());
+//    	http.csrf(csrf -> csrf.disable());
     	return http.build();
     }
     

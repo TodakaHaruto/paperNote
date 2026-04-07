@@ -13,9 +13,9 @@ public class LoginController {
 	}
 
 
-
+	/* ログイン */
 	@PostMapping("/login")
 	public String postLogin() {
-		return "redirect:/user/success";
+		return "redirect:/home/home";
 	}
 }
