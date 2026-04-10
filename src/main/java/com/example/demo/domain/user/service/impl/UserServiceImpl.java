@@ -45,4 +45,11 @@ public class UserServiceImpl implements UserService {
 							int gender) {
 		mapper.updateOne(oldUserId, newUserId, userName, birthday, gender);
 	}
+	
+	
+	/* パスワード変更 */
+	@Override
+	public void updatePass(String userId, String password) {
+		mapper.updatePass(userId, encoder.encode(password));
+	}
 }

@@ -45,4 +45,15 @@
 		where
 			user_id = #{oldUserId}
 	</update>
+	
+	
+	<!-- パスワード変更 -->
+	<update id="updatePass">
+		update
+			users
+		set
+			password = #{password}
+		where
+			user_id = #{userId}
+	</update>
 </mapper>

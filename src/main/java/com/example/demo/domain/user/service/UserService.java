@@ -19,4 +19,7 @@ public interface UserService {
 							LocalDate birthday,
 							int gender);
 	
+	/* パスワード変更 */
+	public void updatePass(String userId, String password);
+	
 }

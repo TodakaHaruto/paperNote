@@ -27,4 +27,10 @@ public interface UserMapper {
 							@Param("gender") int gender);
 	
 	
+	/* パスワード変更 */
+	public void updatePass(@Param("userId") String userId,
+							@Param("password") String password);
+	
+	
+	
 }
