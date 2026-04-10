@@ -9,51 +9,56 @@
 		<div class="header border-bottom">
 			<h1 class="h2">登録情報の更新</h1>
 		</div>
-		<form id="signup-form" method="post" th:action="@{/home/user-info/update}" th:object="${updateForm}" >
-			<p>変更箇所を書き換えてください</p>
-			<table class="table table-striped table-bordered">
-				<tbody>
-					<tr>
-						<th class="w-25">ユーザID</th>
-						<td>
-							<input type="text" th:field="*{userId}">
-						</td>
-					</tr>
-					<tr>
-						<th class="w-25">パスワード</th>
-						<td>
-							<input type="password" name="password">
-						</td>
-					</tr>
-					<tr>
-						<th class="w-25">ユーザ名</th>
-						<td>
-							<input type="text" th:field="*{userName}">
-						</td>
-					</tr>
-					<tr>
-						<th class="w-25">誕生日</th>
-						<td>
-							<input type="text" th:field="*{birthday}">
-						</td>
-					</tr>
-					<tr>
-						<th class="w-25">性別</th>
-						<td >
-							<input type="radio" th:field="*{gender}" value="1"> 
-							<label class="form-check-label" >男性</label>
-							<input type="radio" th:field="*{gender}" value="2">
-							<label class="form-check-label" >女性</label>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<!--登録ボタン-->
-			<div class="text-center">
-				<button name="update" type="submit" class="btn btn-primary w-20 mt-3">変更内容を登録</button>
+		<div class="mx-5 px-4">
+			<form id="signup-form" method="post" th:action="@{/home/user-info/update}" th:object="${updateForm}" >
+				<input type="hidden" th:field="*{oldUserId}">
+				<p>変更箇所を書き換えてください</p>
+				<table class="table table-striped table-bordered">
+					<tbody>
+						<tr>
+							<th class="w-25">ユーザID</th>
+							<td>
+								<input type="text" th:field="*{newUserId}" th:errorclass="is-invalid">
+								<div class="invalid-feedback" th:errors="*{newUserId}"></div>
+							</td>
+						</tr>
+						<tr>
+							<th class="w-25">パスワード</th>
+							<td>
+								<a th:href="@{/home/user-info/update-pass}">パスワードの変更</a>
+							</td>
+						</tr>
+						<tr>
+							<th class="w-25">ユーザ名</th>
+							<td>
+								<input type="text" th:field="*{userName}" th:errorclass="is-invalid">
+								<div class="invalid-feedback" th:errors="*{userName}"></div>
+							</td>
+						</tr>
+						<tr>
+							<th class="w-25">誕生日</th>
+							<td>
+								<input type="text" th:field="*{birthday}" th:errorclass="is-invalid">
+								<div class="invalid-feedback" th:errors="*{birthday}"></div>
+							</td>
+						</tr>
+						<tr>
+							<th class="w-25">性別</th>
+							<td >
+								<input type="radio" th:field="*{gender}" value="1" th:errorclass="is-invalid"> 
+								<label class="form-check-label" >男性</label>
+								<input type="radio" th:field="*{gender}" value="2" th:errorclass="is-invalid">
+								<label class="form-check-label" >女性</label>
+								<div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>						</td>
+						</tr>
+					</tbody>
+				</table>
+				<!--登録ボタン-->
+				<div class="text-center">
+					<button name="update" type="submit" class="btn btn-primary w-20 mt-3">変更内容を登録</button>
+				</div>
+				</form>
 			</div>
-			</form>
-		
 		
 	</div>
 </body>

@@ -37,8 +37,10 @@
 			</table>
 		
 			<form id="update" method="post" th:action="@{/home/user-info/update}" class="form-signup text-center">
-				<!--ユーザID-->
-				<input type="hidden" name="userId" th:value="${loginUser.userId}" />
+				<!--旧ユーザID-->
+				<input type="hidden" name="oldUserId" th:value="${loginUser.userId}" />
+				<!--新ユーザID-->
+				<input type="hidden" name="newUserId" th:value="${loginUser.userId}" />
 				<!--ユーザ名-->
 				<input type="hidden" name="userName" th:value="${loginUser.userName}"/>
 				<!--誕生日-->

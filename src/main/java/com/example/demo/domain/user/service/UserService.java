@@ -1,5 +1,7 @@
 package com.example.demo.domain.user.service;
 
+import java.time.LocalDate;
+
 import com.example.demo.domain.user.model.MUser;
 
 public interface UserService {
@@ -9,4 +11,12 @@ public interface UserService {
 	
 	/* ログインユーザ情報取得 */
 	public MUser getLoginUser(String userId);
+	
+	/* ユーザ情報更新（パスワード更新なし） */
+	public void updateUserOne(String oldUserId,
+							String newUserId,
+							String userName,
+							LocalDate birthday,
+							int gender);
+	
 }

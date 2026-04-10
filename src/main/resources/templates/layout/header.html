@@ -5,7 +5,9 @@
 <body>
 	<nav th:fragment="header" class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
 		<div class="container-fluid">
-			<div class="navbar-brand" href="#">PaperNote</div>
+			<a th:href="@{/home/home}" class="text-decoration-none">
+				<div class="navbar-brand">PaperNote</div>
+			</a>
 			<form method="post" th:action="@{/logout}">
 						<button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
 			</form>

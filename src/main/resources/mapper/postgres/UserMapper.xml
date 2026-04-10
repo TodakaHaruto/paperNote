@@ -31,4 +31,18 @@
 		where
 			user_id = #{userId}
 	</select>
+	
+	
+	<!-- ユーザ情報更新（パスワード更新なし）-->
+	<update id="updateOne">
+		update
+			users
+		set
+			user_id = #{newUserId},
+			user_name = #{userName},
+			birthday = #{birthday},
+			gender = #{gender}
+		where
+			user_id = #{oldUserId}
+	</update>
 </mapper>

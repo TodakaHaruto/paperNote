@@ -1,5 +1,7 @@
 package com.example.demo.repository;
 
+import java.time.LocalDate;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.data.repository.query.Param;
 
@@ -18,11 +20,10 @@ public interface UserMapper {
 
 	
 	/* ユーザ更新(パスワード更新なし) */
-	public void updateOne(@Param("userId") String userId,
+	public void updateOne(@Param("oldUserId") String oldUserId,
 							@Param("newUserId") String newUserId,
-							@Param("password") String password,
 							@Param("userName") String userName,
-							@Param("birthday") String birthday,
+							@Param("birthday") LocalDate birthday,
 							@Param("gender") int gender);
 	
 	

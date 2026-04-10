@@ -1,6 +1,6 @@
 package com.example.demo.form;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +14,11 @@ import lombok.Data;
 public class UpdateForm {
 	@NotBlank(groups = ValidGroup1.class)
 	@Email(groups = ValidGroup2.class)
-	private String userId;
+	private String oldUserId;
+	
+	@NotBlank(groups = ValidGroup1.class)
+	@Email(groups = ValidGroup2.class)
+	private String newUserId;
 	
 	
 	@NotBlank(groups = ValidGroup1.class)
@@ -22,7 +26,8 @@ public class UpdateForm {
 	
 	@NotNull(groups = ValidGroup1.class)
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
-	private Date birthday;
+	private LocalDate birthday;
+	
 	@NotNull(groups = ValidGroup1.class)
 	private Integer gender;
 }
