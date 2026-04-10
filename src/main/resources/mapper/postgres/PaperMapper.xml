@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.demo.repository.PaperMapper">
+
+<!-- 論文一覧取得 -->
+<select id="findMany" resultType="com.example.demo.domain.paper.model.MPaper">
+	select 
+		user_serial,
+		title,
+		read_date,
+		learning_note
+	from 
+		papers
+	where
+		user_serial = #{userSerial}
+</select>
+
+
+</mapper>

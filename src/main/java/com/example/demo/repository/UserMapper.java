@@ -13,8 +13,6 @@ public interface UserMapper {
 	/* ユーザ登録 */
 	public int insertOne(MUser user);
 	
-	
-	
 	/* ログインユーザ取得 */
 	public MUser findLoginUser(String userId);
 

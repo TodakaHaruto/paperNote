@@ -31,6 +31,7 @@
 		where
 			user_id = #{userId}
 	</select>
+
 	
 	
 	<!-- ユーザ情報更新（パスワード更新なし）-->
