@@ -5,11 +5,14 @@
 
 <mapper namespace="com.example.demo.repository.PaperMapper">
 
+
 <!-- 論文一覧取得 -->
 <select id="findMany" resultType="com.example.demo.domain.paper.model.MPaper">
 	select 
+		paper_id,
 		user_serial,
 		title,
+		paper_url,
 		read_date,
 		learning_note
 	from 
@@ -18,5 +21,20 @@
 		user_serial = #{userSerial}
 </select>
 
+
+<!-- 論文一件検索 -->
+<select id="findOne" resultType="com.example.demo.domain.paper.model.MPaper">
+	select
+		paper_id,
+		user_serial,
+		title,
+		paper_url,
+		read_date,
+		learning_note
+	from
+		papers
+	where
+		paper_id = #{paperId}
+</select>
 
 </mapper>

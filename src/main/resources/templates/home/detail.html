@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+	<title>論文詳細</title>
+	<link rel="stylesheet" th:href="@{/css/user/list.css}">
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="header border-bottom">
+			<p class="h2">論文詳細</p>
+		</div>
+		<!-- 一覧表示 -->
+		<div class="mx-5">
+			<table class="table table-striped table-bordered">
+				<tbody>
+					<tr>
+						<th class="th-width">論文タイトル</th>
+						<td th:text="${userDetailForm.title}"></td>
+					</tr>
+					<tr>
+						<th class="th-width">記録日</th>
+						<td th:text="${#dates.format(userDetailForm.readDate, 'yyyy/MM/dd')}"></td>
+					</tr>
+					<tr>
+						<th class="th-width">論文URL</th>
+						<td><a th:text="${userDetailForm.paperUrl}" th:href="${userDetailForm.paperUrl}" target="_blank"></a></td>
+						
+					</tr>
+					<tr>
+						<th class="th-width">得た知見</th>
+						<td th:text="${userDetailForm.learningNote}"></td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+</body>
+</html>

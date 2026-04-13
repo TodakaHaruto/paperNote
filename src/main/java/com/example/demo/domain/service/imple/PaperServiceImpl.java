@@ -1,5 +1,6 @@
 package com.example.demo.domain.service.imple;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,10 @@ public class PaperServiceImpl implements PaperService {
 	@Override
 	public List<MPaper> getPapers(MUser user) {
 		return mapper.findMany(user);
+	}
+	
+	@Override
+	public MPaper getPaper(BigInteger paperId) {
+		return mapper.findOne(paperId);
 	}
 }
