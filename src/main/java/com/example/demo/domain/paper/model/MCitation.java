@@ -5,7 +5,7 @@ import java.math.BigInteger;
 import lombok.Data;
 
 @Data
-public class MCiting {
+public class MCitation {
 	private BigInteger citingPaperId;
 	private String citingPaperTitle;
 	private BigInteger citedPaperId;

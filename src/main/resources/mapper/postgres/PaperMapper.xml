@@ -37,4 +37,34 @@
 		paper_id = #{paperId}
 </select>
 
+<!-- 先行研究論文を取得 -->
+<select id="findPreCitations" resultType="com.example.demo.domain.paper.model.MCitation">
+select
+	p1.paper_id AS citing_paper_id,
+	p1.title AS citing_paper_title,
+	p2.paper_id AS cited_paper_id,
+	p2.title AS cited_paper_title
+from papers p1
+	inner join paper_citations pc
+		on p1.paper_id = pc.citing_paper_id
+	inner join papers p2
+		on pc.cited_paper_id = p2.paper_id
+where citing_paper_id = #{paperId}
+</select>
+
+<!-- 後続研究論文を取得 -->
+<select id="findSubCitations" resultType="com.example.demo.domain.paper.model.MCitation">
+select
+	p1.paper_id AS cited_paper_id,
+	p1.title AS cited_paper_title,
+	p2.paper_id AS citing_paper_id,
+	p2.title AS citing_paper_title
+from papers p1
+	inner join paper_citations pc
+		on p1.paper_id = pc.cited_paper_id
+	inner join papers p2
+		on pc.citing_paper_id = p2.paper_id
+where cited_paper_id = #{paperId}
+</select>
 </mapper>
+

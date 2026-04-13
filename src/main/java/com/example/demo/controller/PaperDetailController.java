@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.math.BigInteger;
+import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.domain.paper.model.MCitation;
 import com.example.demo.domain.paper.model.MPaper;
 import com.example.demo.domain.service.PaperService;
 import com.example.demo.form.PaperDetailForm;
@@ -25,18 +27,24 @@ public class PaperDetailController {
 		private ModelMapper modelMapper;
 	
 		@GetMapping("detail/{paperId}")
-		public String getPaper(PaperDetailForm form, Model model, @PathVariable("paperId") BigInteger paperId) {
+		public String getPaper(PaperDetailForm paperDetailForm, Model model, @PathVariable("paperId") BigInteger paperId) {
 			//論文情報を取得
 			MPaper paper = paperService.getPaper(paperId);
 			
 			//論文情報をformに変換
-			form = modelMapper.map(paper, PaperDetailForm.class);
+			paperDetailForm = modelMapper.map(paper, PaperDetailForm.class);
+			//論文詳細情報をmodelに格納
+			model.addAttribute("userDetailForm", paperDetailForm);
 			
-			System.out.println(form.getTitle());
-			System.out.println(form.getReadDate());
-			System.out.println(form.getPaperUrl());
+			//先行研究情報を取得
+			List<MCitation> preCitation = paperService.getPreCitations(paperId);
+			//modelに格納
+			model.addAttribute("preCitations", preCitation);
 			
-			model.addAttribute("userDetailForm", form);
+			//後続研究情報を取得
+			List<MCitation> subCitation = paperService.getSubCitations(paperId);
+			//modelに格納
+			model.addAttribute("subCitations", subCitation);
 			
 			return "/home/detail";
 		}
