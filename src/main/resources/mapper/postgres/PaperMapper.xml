@@ -49,7 +49,7 @@ from papers p1
 		on p1.paper_id = pc.citing_paper_id
 	inner join papers p2
 		on pc.cited_paper_id = p2.paper_id
-where citing_paper_id = #{paperId}
+where pc.citing_paper_id = #{paperId}
 </select>
 
 <!-- 後続研究論文を取得 -->
@@ -64,7 +64,41 @@ from papers p1
 		on p1.paper_id = pc.cited_paper_id
 	inner join papers p2
 		on pc.citing_paper_id = p2.paper_id
-where cited_paper_id = #{paperId}
+where pc.cited_paper_id = #{paperId}
 </select>
+
+<!-- 読んだ論文を一件登録 -->
+<insert id="insertOne"
+          parameterType="com.example.demo.form.PaperDetailForm"
+          useGeneratedKeys="true"
+          keyProperty="paperId"
+          keyColumn="paper_id">
+insert into papers(
+	user_serial,
+	title,
+	paper_url,
+	read_date,
+	learning_note
+	) values (
+	#{userSerial},
+	#{title},
+	#{paperUrl},
+	#{readDate},
+	#{learningNote}
+	)
+</insert>
+
+<!-- 引用情報を登録 -->
+<insert id="insertCitation">
+insert into paper_citations(
+	citing_paper_id,
+	cited_paper_id
+) values (
+	#{citingPaperId},
+	#{citedPaperId}
+)
+</insert>
+
+
 </mapper>
 

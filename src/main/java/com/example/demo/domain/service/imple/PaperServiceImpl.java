@@ -10,6 +10,7 @@ import com.example.demo.domain.paper.model.MCitation;
 import com.example.demo.domain.paper.model.MPaper;
 import com.example.demo.domain.service.PaperService;
 import com.example.demo.domain.user.model.MUser;
+import com.example.demo.form.PaperDetailForm;
 import com.example.demo.repository.PaperMapper;
 
 @Service
@@ -38,6 +39,18 @@ public class PaperServiceImpl implements PaperService {
 	@Override
 	public List<MCitation> getSubCitations(BigInteger paperId) {
 		return mapper.findSubCitations(paperId);
+	}
+	
+	/* 読んだ論文を登録 */
+	@Override
+	public void registerPaper(PaperDetailForm form) {
+		mapper.insertOne(form);
+	}
+	
+	/* 引用情報を登録 */
+	@Override
+	public void registerCitation(BigInteger citingPaperId, BigInteger citedPaperId) {
+		mapper.insertCitation(citingPaperId, citedPaperId);
 	}
 	
 }

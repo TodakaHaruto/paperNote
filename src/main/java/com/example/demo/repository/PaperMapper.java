@@ -4,10 +4,12 @@ import java.math.BigInteger;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.domain.paper.model.MCitation;
 import com.example.demo.domain.paper.model.MPaper;
 import com.example.demo.domain.user.model.MUser;
+import com.example.demo.form.PaperDetailForm;
 
 @Mapper
 public interface PaperMapper {
@@ -22,4 +24,10 @@ public interface PaperMapper {
 	
 	/* 後続研究論文を取得 */
 	public List<MCitation> findSubCitations(BigInteger paperId);
+	
+	/* 読んだ論文を登録 */
+	public void insertOne(PaperDetailForm form);
+	
+	/* 引用情報を登録 */
+	public void insertCitation(@Param("citingPaperId") BigInteger citingPaperId, @Param("citedPaperId") BigInteger citedPaperId);
 }
