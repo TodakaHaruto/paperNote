@@ -30,4 +30,7 @@ public interface PaperMapper {
 	
 	/* 引用情報を登録 */
 	public void insertCitation(@Param("citingPaperId") BigInteger citingPaperId, @Param("citedPaperId") BigInteger citedPaperId);
+	
+	/* 記録を削除 */
+	public void deleteOne(BigInteger paperId);
 }

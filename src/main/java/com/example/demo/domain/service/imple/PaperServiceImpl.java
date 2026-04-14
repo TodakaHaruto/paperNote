@@ -53,4 +53,9 @@ public class PaperServiceImpl implements PaperService {
 		mapper.insertCitation(citingPaperId, citedPaperId);
 	}
 	
+	/* 記録を削除 */
+	@Override
+	public void deletePaper(BigInteger paperId) {
+		mapper.deleteOne(paperId);
+	}
 }

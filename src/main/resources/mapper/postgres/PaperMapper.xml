@@ -99,6 +99,14 @@ insert into paper_citations(
 )
 </insert>
 
+<!-- 記録の削除 -->
+<delete id="deleteOne">
+delete from
+		papers
+where
+	paper_id = #{paperId}
+</delete>
+
 
 </mapper>
 

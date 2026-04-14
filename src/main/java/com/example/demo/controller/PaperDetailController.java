@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.domain.paper.model.MCitation;
@@ -47,5 +48,19 @@ public class PaperDetailController {
 			model.addAttribute("subCitations", subCitation);
 			
 			return "/home/detail";
+		}
+		
+		@PostMapping(value = "/detail", params = "update")
+		public String updatePaper() {
+			//修正画面へ移動
+			return "/home/paper/upadte";
+		}
+		
+		@PostMapping(value = "/detail/{paperId}", params = "delete")
+		public String deltePaper(@PathVariable("paperId") BigInteger paperId) {
+			//削除処理
+			paperService.deletePaper(paperId);
+			
+			return "/home/paper/delete";
 		}
 }

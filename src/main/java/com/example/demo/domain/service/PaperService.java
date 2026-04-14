@@ -26,4 +26,7 @@ public interface PaperService {
 	
 	/* 引用情報を登録 */
 	public void registerCitation(BigInteger citingPaperId, BigInteger citedPaperId);
+	
+	/* 記録を削除 */
+	public void deletePaper(BigInteger paperId);
 }
