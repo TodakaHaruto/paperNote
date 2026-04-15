@@ -11,10 +11,10 @@
 		<!-- 一覧表示 -->
 		<div class="mx-5">
 			<div class="d-flex my-2">
-				<form class="" id="update" method="post" th:action="@{/home/detail/{id}(id=${userDetailForm.paperId})}">
+				<form class="" id="update" method="post" th:action="@{/home/detail/{id}(id=${paperDetailForm.paperId})}">
 					<button type="submit" class="btn btn-primary" name="update">更新</button>
 				</form>
-				<form class="mx-2" id="deleteForm" method="post" th:action="@{/home/detail/{id}(id=${userDetailForm.paperId})}" onsubmit="return CheckDelete()">
+				<form class="mx-2" id="deleteForm" method="post" th:action="@{/home/detail/{id}(id=${paperDetailForm.paperId})}" onsubmit="return CheckDelete()">
 					<button type="submit" class="btn btn-danger" name="delete">削除</button>
 				</form>	
 			</div>
@@ -23,20 +23,20 @@
 				<tbody>
 					<tr>
 						<th class="th-width">論文タイトル</th>
-						<td th:text="${userDetailForm.title}"></td>
+						<td th:text="${paperDetailForm.title}"></td>
 					</tr>
 					<tr>
 						<th class="th-width">記録日</th>
-						<td th:text="${#dates.format(userDetailForm.readDate, 'yyyy/MM/dd')}"></td>
+						<td th:text="${#dates.format(paperDetailForm.readDate, 'yyyy/MM/dd')}"></td>
 					</tr>
 					<tr>
 						<th class="th-width">論文URL</th>
-						<td><a th:text="${userDetailForm.paperUrl}" th:href="${userDetailForm.paperUrl}" target="_blank"></a></td>
+						<td><a th:text="${paperDetailForm.paperUrl}" th:href="${paperDetailForm.paperUrl}" target="_blank"></a></td>
 						
 					</tr>
 					<tr>
 						<th class="th-width">得た知見</th>
-						<td th:text="${userDetailForm.learningNote}"></td>
+						<td th:text="${paperDetailForm.learningNote}"></td>
 					</tr>
 				</tbody>
 			</table>
