@@ -20,7 +20,7 @@
 					    <tr th:each="item : ${paperList}"
 					        th:onclick="|window.location.href='@{/home/detail/{id}(id=${item.paperId})}'|">
 					        <td th:text="${item.title}"></td>
-					        <td th:text="${#dates.format(item.readDate, 'yyyy/MM/dd')}"></td>
+					        <td th:text="${#dates.format(item.readDate, 'yyyy-MM-dd')}"></td>
 					    </tr>
 					</tbody>
 				

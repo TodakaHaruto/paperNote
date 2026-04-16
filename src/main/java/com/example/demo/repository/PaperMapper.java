@@ -33,4 +33,10 @@ public interface PaperMapper {
 	
 	/* 記録を削除 */
 	public void deleteOne(BigInteger paperId);
+	
+	/* 登録論文情報を更新 */
+	public void updateOne(PaperDetailForm form);
+	
+	/* 引用情報を削除 */
+	public void deleteCitations(BigInteger paperId);
 }

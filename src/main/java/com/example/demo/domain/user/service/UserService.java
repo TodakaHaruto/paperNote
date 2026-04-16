@@ -21,5 +21,5 @@ public interface UserService {
 	
 	/* パスワード変更 */
 	public void updatePass(String userId, String password);
-	
+
 }

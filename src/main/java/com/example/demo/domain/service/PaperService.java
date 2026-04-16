@@ -25,8 +25,22 @@ public interface PaperService {
 	public void registerPaper(PaperDetailForm form);
 	
 	/* 引用情報を登録 */
-	public void registerCitation(BigInteger citingPaperId, BigInteger citedPaperId);
+	public void registerCitation(BigInteger citingPaperId,
+									BigInteger citedPaperId);
 	
 	/* 記録を削除 */
 	public void deletePaper(BigInteger paperId);
+	
+	/* 論文情報を更新 */
+	public void updatePaper(PaperDetailForm form);
+	
+	/* 引用情報を削除 */
+	public void deleteCitations(BigInteger paperId);
+	
+	
+	/* 読んだ論文と引用情報の登録 */
+	public void registerPaperWithCitations(PaperDetailForm form);
+	
+	/* 論文情報と引用情報の更新 */
+	public void updatePaperWithCitations(PaperDetailForm form);
 }

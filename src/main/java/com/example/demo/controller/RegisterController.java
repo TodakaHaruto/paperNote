@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +16,12 @@ import com.example.demo.domain.service.PaperService;
 import com.example.demo.domain.user.model.MUser;
 import com.example.demo.domain.user.service.UserService;
 import com.example.demo.form.PaperDetailForm;
-import com.example.demo.form.RegisterPaperForm;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping("/home")
+@Slf4j
 public class RegisterController {
 	
 	@Autowired
@@ -41,35 +42,19 @@ public class RegisterController {
 	}
 	
 	@PostMapping("/register")
-	public String postRegister(@AuthenticationPrincipal org.springframework.security.core.userdetails.User loginUser, Model model, @ModelAttribute RegisterPaperForm form) {
+	public String postRegister(@AuthenticationPrincipal org.springframework.security.core.userdetails.User loginUser, Model model, @ModelAttribute PaperDetailForm form) {
 		//ユーザ情報を取得
 		MUser user = userService.getLoginUser(loginUser.getUsername());
-		/* 論文登録処理 */
-		PaperDetailForm paperForm = new PaperDetailForm();
-		//formに情報を格納
-		paperForm.setUserSerial(user.getUserSerial());
-		paperForm.setTitle(form.getTitle());
-		paperForm.setReadDate(form.getReadDate());
-		paperForm.setPaperUrl(form.getPaperUrl());
-		paperForm.setLearningNote(form.getLearningNote());
+		
+		//formにユーザ情報を格納
+		form.setUserSerial(user.getUserSerial());
+		
 		//登録処理を実行
-		paperService.registerPaper(paperForm); 
-		BigInteger paperId = paperForm.getPaperId();//登録論文ID取得
-		
-		/* 引用情報登録処理 */
-		//先行論文を登録
-		if(form.getPrePaperList() != null) {
-			for(BigInteger citedId: form.getPrePaperList()) {
-				paperService.registerCitation(paperId, citedId);
-			}
+		try {
+			paperService.registerPaperWithCitations(form);
+		} catch (Exception e) {
+			log.error("論文情報登録でエラー", e);
 		}
-		//後続論文を登録
-		if(form.getSubPaperList() != null) {
-			for(BigInteger citingId: form.getSubPaperList()) {
-				paperService.registerCitation(citingId, paperId);
-			}
-		}
-		
 		
 		return "redirect:/home/papers";
 	}

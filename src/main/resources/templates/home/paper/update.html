@@ -12,7 +12,8 @@
 			<p class="h2">登録情報の更新</p>
 		</div>
 		
-		<form id="register-form" method="post" th:action="@{/home/register}" class="form-signup" th:object="${paperDetailForm}">
+		<form id="register-form" method="post" th:action="@{/home/detail/update}" class="form-signup" th:object="${paperDetailForm}">
+			<input type="hidden" th:field="*{paperId}">
 			<div class="mx-5">
 				<div class="mb-3">
 					<label for="title">タイトル</label>
@@ -37,7 +38,7 @@
 								<p class="h4">先行研究</p>
 							</div>
 							<div class="mt-3">
-								<select id="prePaper" name="prePaperList" multiple th:field="*{preCitationList}">
+								<select id="prePaper" multiple th:field="*{preCitationList}">
 									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}"></option>
 								</select>
 							</div>
@@ -47,7 +48,7 @@
 								<p class="h4">後続研究</p>
 							</div>
 							<div class="mt-3">
-								<select id="subPaper" name="subPaperList" multiple th:field="*{subCitationList}">
+								<select id="subPaper" multiple th:field="*{subCitationList}">
 									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}">multiSelect</option>
 								</select>
 							</div>

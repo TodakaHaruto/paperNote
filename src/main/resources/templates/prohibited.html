@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Error</title>
+</head>
+<body>
+	
+	<h1>不正なアクセス</h1>
+	<p>許可されていないアクセスです</p>
+	<form method="get" th:action="@{/login}">
+		<button class="btn btn-link" type="submit">ログイン画面に戻る</button>
+	</form>
+</body>
+</html>

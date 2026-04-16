@@ -37,7 +37,7 @@
 								<p class="h4">先行研究</p>
 							</div>
 							<div class="mt-3">
-								<select id="prePaper" name="prePaperList" multiple>
+								<select id="prePaper" name="preCitationList" multiple>
 									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}"></option>
 								</select>
 							</div>
@@ -47,7 +47,7 @@
 								<p class="h4">後続研究</p>
 							</div>
 							<div class="mt-3">
-								<select id="subPaper" name="subPaperList" multiple>
+								<select id="subPaper" name="subCitationList" multiple>
 									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}">multiSelect</option>
 								</select>
 							</div>

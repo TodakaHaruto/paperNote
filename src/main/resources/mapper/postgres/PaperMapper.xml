@@ -107,6 +107,30 @@ where
 	paper_id = #{paperId}
 </delete>
 
+<!-- 論文情報更新 -->
+<update id="updateOne">
+update 
+	papers
+set
+	title = #{title},
+	paper_url = #{paperUrl},
+	read_date = #{readDate},
+	learning_note = #{learningNote}
+where
+	paper_id = #{paperId}
+</update>
+
+<!-- 引用情報の削除 -->
+<delete id="deleteCitations">
+delete from
+	paper_citations
+where
+	citing_paper_id = #{paperId}
+or
+	cited_paper_id = #{paperId}
+</delete>	
+
+
 
 </mapper>
 
