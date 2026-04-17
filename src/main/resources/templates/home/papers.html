@@ -12,17 +12,20 @@
 		<!-- 一覧表示 -->
 		<div class="mx-5">
 			<table class="table table-striped table-bordered table-hover">
+				<thead>
 					<tr>
-						<th class="th-width">論文タイトル</th>
-						<th class="th-width" style="width: 30%">記録日</th>
+						<th class="th-width" th:text="#{paper.form.title}"></th>
+						<th class="th-width" style="width: 30%" th:text="#{paper.form.read}"></th>
 					</tr>
-					<tbody>
-					    <tr th:each="item : ${paperList}"
-					        th:onclick="|window.location.href='@{/home/detail/{id}(id=${item.paperId})}'|">
-					        <td th:text="${item.title}"></td>
-					        <td th:text="${#dates.format(item.readDate, 'yyyy-MM-dd')}"></td>
-					    </tr>
-					</tbody>
+				</thead>
+					
+				<tbody>
+				    <tr th:each="item : ${paperList}"
+				        th:onclick="|window.location.href='@{/home/detail/{id}(id=${item.paperId})}'|">
+				        <td th:text="${item.title}"></td>
+				        <td th:text="${item.readDate}"></td>
+				    </tr>
+				</tbody>
 				
 			</table>
 		</div>

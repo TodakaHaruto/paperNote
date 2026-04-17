@@ -1,7 +1,7 @@
 package com.example.demo.domain.user.model;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -11,6 +11,6 @@ public class MUser {
 	private String userId;
 	private String password;
 	private String userName;
-	private Date birthday;
+	private LocalDate birthday;
 	private int gender;
 }

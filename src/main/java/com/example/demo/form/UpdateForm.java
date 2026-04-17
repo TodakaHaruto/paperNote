@@ -25,7 +25,7 @@ public class UpdateForm {
 	private String userName;
 	
 	@NotNull(groups = ValidGroup1.class)
-	@DateTimeFormat(pattern = "yyyy/MM/dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birthday;
 	
 	@NotNull(groups = ValidGroup1.class)

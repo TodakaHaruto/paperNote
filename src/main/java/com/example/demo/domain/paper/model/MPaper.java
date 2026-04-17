@@ -1,7 +1,7 @@
 package com.example.demo.domain.paper.model;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -11,6 +11,6 @@ public class MPaper {
 	private BigInteger userSerial;
 	private String title;
 	private String paperUrl;
-	private Date readDate;
+	private LocalDate readDate;
 	private String learningNote;
 }

@@ -6,10 +6,10 @@
 	<nav th:fragment="header" class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
 		<div class="container-fluid">
 			<a th:href="@{/home/papers}" class="text-decoration-none">
-				<div class="navbar-brand">PaperNote</div>
+				<div class="navbar-brand" th:text="#{app.title}"></div>
 			</a>
 			<form method="post" th:action="@{/logout}">
-						<button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
+						<button class="btn btn-link pull-right navbar-brand" type="submit" th:text="#{user.logout}"></button>
 			</form>
 		</div>
 	</nav>

@@ -9,46 +9,51 @@
 <body>
 	<div layout:fragment="content">
 		<div class="header border-bottom">
-			<p class="h2">読んだ論文の登録</p>
+			<p class="h2" th:text="#{paper.read.title}"></p>
 		</div>
 		
-		<form id="register-form" method="post" th:action="@{/home/register}" class="form-signup">
+		<form id="register-form" method="post" th:action="@{/home/register}" class="form-signup" th:object="${paperDetailForm}">
 			<div class="mx-5">
+				<!-- タイトル -->
 				<div class="mb-3">
-					<label for="title">タイトル</label>
-					<input type="text" id="title" class="form-control" name="title">
+					<label for="title" th:text="#{paper.form.title}"></label>
+					<input type="text" id="title" class="form-control" th:field="*{title}" th:errorclass="is-invalid">
+					<div class="invalid-feedback" th:errors="*{title}"></div>
 				</div>
+				<!-- 記録日 -->
 				<div class="mb-3">
-					<label for="readDate">記録日</label>
-					<input type="date" id="readDate" class="form-control" name="readDate">
+					<label for="readDate" th:text="#{paper.form.read}"></label>
+					<input type="date" id="readDate" class="form-control" th:field="*{readDate}">
 				</div>
+				<!-- 論文URL -->
 				<div class="mb-3">
-					<label for="paperUrl">論文URL</label>
-					<input type="text" id="paperUrl" class="form-control" name="paperUrl">
+					<label for="paperUrl" th:text="#{paper.form.url}"></label>
+					<input type="text" id="paperUrl" class="form-control" th:field="*{paperUrl}">
 				</div>
+				<!-- 得た知見 -->
 				<div class="mb-3">
-					<label for="learning_note">得た知見</label>
-					<textarea id="learning_note" class="form-control" style="height: 150px;" name="learningNote"></textarea>
+					<label for="learning_note" th:text="#{paper.form.learning}"></label>
+					<textarea id="learning_note" class="form-control" style="height: 150px;" th:field="*{learningNote}"></textarea>
 				</div>
 				<div class="container">
 					<div class="row">
 						<div class="col">
 							<div class="border-bottom">
-								<p class="h4">先行研究</p>
+								<p class="h4" th:text="#{paper.form.pre}"></p>
 							</div>
 							<div class="mt-3">
-								<select id="prePaper" name="preCitationList" multiple>
+								<select id="prePaper" th:field="*{preCitationList}" multiple>
 									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}"></option>
 								</select>
 							</div>
 						</div>
 						<div class="col">
 							<div class="border-bottom">
-								<p class="h4">後続研究</p>
+								<p class="h4" th:text="#{paper.form.sub}"></p>
 							</div>
 							<div class="mt-3">
-								<select id="subPaper" name="subCitationList" multiple>
-									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}">multiSelect</option>
+								<select id="subPaper" th:field="*{subCitationList}" multiple>
+									<option th:each="item:${paperList}" th:value="${item.paperId}" th:text="${item.title}"></option>
 								</select>
 							</div>
 						</div>

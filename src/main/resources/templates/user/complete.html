@@ -15,10 +15,10 @@
 <body class="bg-light">
 	<div layout:fragment="content">
 	<form id="signup-form" method="post" th:action="@{/logout}" class="form-signup" >
-		<h2>登録が完了しました</h2>
+		<h2 th:text="#{signup.complete}"></h2>
 		
 		<!--ログイン画面へ遷移-->
-		<input type="submit" th:value="ログイン画面へ戻る" class="btn btn-primary w-100 mt-3">
+		<input type="submit" th:value="#{back.login}" class="btn btn-primary w-100 mt-3">
 	</form>
 	</div>
 

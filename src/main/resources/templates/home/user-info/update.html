@@ -7,57 +7,59 @@
 <body>
 	<div layout:fragment="content">
 		<div class="header border-bottom">
-			<h1 class="h2">登録情報の更新</h1>
+			<h1 class="h2" th:text="#{update}"></h1>
 		</div>
 		<div class="mx-5 px-4">
 			<form id="signup-form" method="post" th:action="@{/home/user-info/update}" th:object="${updateForm}" >
 				<input type="hidden" th:field="*{oldUserId}">
-				<p>変更箇所を書き換えてください</p>
+				<p th:text="#{mypage.update.subtitle}"></p>
 				<table class="table table-striped table-bordered">
 					<tbody>
 						<tr>
-							<th class="w-25">ユーザID</th>
+							<th class="w-25" th:text="#{userId}"></th>
 							<td>
 								<input type="text" th:field="*{newUserId}" th:errorclass="is-invalid">
 								<div class="invalid-feedback" th:errors="*{newUserId}"></div>
 							</td>
 						</tr>
 						<tr>
-							<th class="w-25">パスワード</th>
+							<th class="w-25" th:text="#{password}"></th>
 							<td>
-								<a th:href="@{/home/user-info/update-pass}">パスワードの変更はこちら</a>
+								<a th:href="@{/home/user-info/update-pass}" th:text="#{mypage.update.password}"></a>
 							</td>
 						</tr>
 						<tr>
-							<th class="w-25">ユーザ名</th>
+							<th class="w-25" th:text="#{userName}"></th>
 							<td>
 								<input type="text" th:field="*{userName}" th:errorclass="is-invalid">
 								<div class="invalid-feedback" th:errors="*{userName}"></div>
 							</td>
 						</tr>
 						<tr>
-							<th class="w-25">誕生日</th>
+							<th class="w-25" th:text="#{birthday}"></th>
 							<td>
-								<input type="text" th:field="*{birthday}" th:errorclass="is-invalid">
+								<input type="date" th:field="*{birthday}" th:errorclass="is-invalid">
 								<div class="invalid-feedback" th:errors="*{birthday}"></div>
 							</td>
 						</tr>
 						<tr>
-							<th class="w-25">性別</th>
+							<th class="w-25" th:text="#{gender}"></th>
 							<td >
 								<input type="radio" th:field="*{gender}" value="1" th:errorclass="is-invalid"> 
-								<label class="form-check-label" >男性</label>
+								<label class="form-check-label" th:text="#{male}"></label>
 								<input type="radio" th:field="*{gender}" value="2" th:errorclass="is-invalid">
-								<label class="form-check-label" >女性</label>
+								<label class="form-check-label" th:text="#{female}"></label>
 								<div class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>						</td>
 						</tr>
 					</tbody>
 				</table>
 				<!--登録ボタン-->
 				<div class="text-center">
-					<button name="update" type="submit" class="btn btn-primary w-20 mt-3">変更内容を登録</button>
+					<input type="submit" class="btn btn-secondary w-20 mt-3 mx-3" style="--bs-btn-padding-x: 2rem;" th:value="#{form.back}" form="back">
+					<button name="update" type="submit" class="btn btn-primary w-20 mt-3" th:text="#{mypage.update.check}"></button>
 				</div>
 				</form>
+				<form id="back" method="get" th:action="@{/home/mypage}"></form>
 			</div>
 		
 	</div>

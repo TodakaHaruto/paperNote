@@ -7,19 +7,26 @@
 <body>
 	<div layout:fragment="content">
 		<div class="header border-bottom">
-			<h1 class="h2">パスワードの変更</h1>
+			<h1 class="h2" th:text="#{mypage.updatepass.title}"></h1>
 		</div>
 		<div class="mx-5 px-4">
-			<p>新しいパスワードを入力してください</p>
+			<p th:text="#{mypage.updatepass.subtitle}"></p>
 			<form method="post" th:action="@{/home/user-info/update-pass}" th:object="${passwordForm}">
 				<table class="table table-striped table-bordered">
 					<input type="hidden" th:field="*{userId}">
 					<tbody>
 						<tr>
-							<th class="w-25">パスワード</th>
+							<th class="w-25" th:text="#{passoword}"></th>
 							<td>
 								<input type="password" th:errorclass="is-invalid" th:field="*{password}">
 								<div class="invalid-feedback" th:errors="*{password}"></div>
+							</td>
+						</tr>
+						<tr>
+							<th class="w-25" th:text="#{confirm.password}"></th>
+							<td>
+								<input type="password" th:errorclass="is-invalid" th:field="*{confirmPassword}">
+								<div class="text-danger mt-1 small" th:errors="*{passwordMatched}"></div>
 							</td>
 						</tr>
 					</tbody>
