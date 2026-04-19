@@ -9,7 +9,7 @@
 		<div class="header border-bottom">
 			<h1 class="h2" th:text="#{update}"></h1>
 		</div>
-		<div class="mx-5 px-4">
+		<div class="mx-1 px-4">
 			<form id="signup-form" method="post" th:action="@{/home/user-info/update}" th:object="${updateForm}" >
 				<input type="hidden" th:field="*{oldUserId}">
 				<p th:text="#{mypage.update.subtitle}"></p>

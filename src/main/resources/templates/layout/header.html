@@ -3,14 +3,22 @@
 <head>
 </head>
 <body>
-	<nav th:fragment="header" class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
-		<div class="container-fluid">
+	<nav th:fragment="header" class="navbar navbar-dark bg-dark">
+		<div class="container-fluid d-flex justify-content-between align-items-center">
 			<a th:href="@{/home/papers}" class="text-decoration-none">
 				<div class="navbar-brand" th:text="#{app.title}"></div>
 			</a>
-			<form method="post" th:action="@{/logout}">
-						<button class="btn btn-link pull-right navbar-brand" type="submit" th:text="#{user.logout}"></button>
-			</form>
+			
+			<!-- スマホ用メニューボタン -->
+			<div class="d-sm-none">
+				<button class="btn"
+				        type="button"
+				        data-bs-toggle="offcanvas"
+				        data-bs-target="#mobileMenu"
+				        aria-controls="mobileMenu">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
 		</div>
 	</nav>
 </body>

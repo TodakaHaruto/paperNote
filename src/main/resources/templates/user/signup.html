@@ -15,7 +15,7 @@
 <body class="bg-light">
 	<div layout:fragment="content">
 	<form id="signup-form" method="post" th:action="@{/user/signup}" class="form-signup" th:object="${signupForm}">
-		<h2 th:text="#{user.signup.title}"></h2>
+		<h2 th:text="#{user.signup.title}" class="text-center"></h2>
 		<!--ユーザID-->
 		<div class="mb-3">
 			<label for="userId" th:text="#{userId}"></label>

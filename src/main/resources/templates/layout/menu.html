@@ -3,18 +3,23 @@
 <head>
 </head>
 <body>
-	<nav th:fragment="menu" class="bg-light mt-3">
-		<ol class="nav flex-column">
-			<li role="presentation">
+	<nav th:fragment="menu">
+		<ul class="nav nav-pills flex-column gap-2">
+			<li class="nav-item">
 				<a class="nav-link" th:href="@{'/home/papers'}"> 読んだ論文 </a>
 			</li>
-			<li>
+			<li class="nav-item">
 				<a class="nav-link" th:href="@{'/home/register'}">読んだ論文の登録</a>
 			</li>
-			<li>
+			<li class="nav-item">
 				<a class="nav-link" th:href="@{'/home/mypage'}">マイページ</a>
 			</li>
-		</ol>
+			<li>
+				<form method="post" th:action="@{/logout}" class="nav-item">
+					<button class="btn nav-link" type="submit" th:text="#{user.logout}"></button>
+				</form>
+			</li>
+		</ul>
 
 	</nav>
 </body>
