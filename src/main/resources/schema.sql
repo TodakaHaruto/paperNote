@@ -23,7 +23,7 @@ REFERENCES users(user_serial)
 ON DELETE CASCADE
 );
 
-CREATE TABLE paper_citations (
+CREATE TABLE IF NOT EXISTS paper_citations (
 citation_id BIGSERIAL PRIMARY KEY,
 citing_paper_id BIGINT NOT NULL,
 cited_paper_id BIGINT NOT NULL,
