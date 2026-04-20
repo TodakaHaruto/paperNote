@@ -16,7 +16,7 @@
 					<input type="hidden" th:field="*{userId}">
 					<tbody>
 						<tr>
-							<th class="w-25" th:text="#{passoword}"></th>
+							<th class="w-25" th:text="#{password}"></th>
 							<td>
 								<input type="password" th:errorclass="is-invalid" th:field="*{password}">
 								<div class="invalid-feedback" th:errors="*{password}"></div>
@@ -33,7 +33,7 @@
 				</table>
 				<!--登録ボタン-->
 					<div class="text-center">
-						<button name="update" type="submit" class="btn btn-primary w-20 mt-3">変更内容を登録</button>
+						<button name="update" type="submit" class="btn btn-primary w-20 mt-3" th:text="#{mypage.update.check}"></button>
 					</div>
 			</form>
 		</div>

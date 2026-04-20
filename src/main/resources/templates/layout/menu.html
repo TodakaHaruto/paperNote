@@ -6,13 +6,13 @@
 	<nav th:fragment="menu">
 		<ul class="nav nav-pills flex-column gap-2">
 			<li class="nav-item">
-				<a class="nav-link" th:href="@{'/home/papers'}"> 読んだ論文 </a>
+				<a class="nav-link" th:href="@{'/home/papers'}" th:text="#{paper.read.link}"></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" th:href="@{'/home/register'}">読んだ論文の登録</a>
+				<a class="nav-link" th:href="@{'/home/register'}" th:text="#{paper.read.title}"></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" th:href="@{'/home/mypage'}">マイページ</a>
+				<a class="nav-link" th:href="@{'/home/mypage'}" th:text="#{mypage.title}"></a>
 			</li>
 			<li>
 				<form method="post" th:action="@{/logout}" class="nav-item">

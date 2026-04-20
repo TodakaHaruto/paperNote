@@ -7,7 +7,7 @@
 <body>
 	<div layout:fragment="content">
 		<div class="header border-bottom">
-			<p th:text="${loginUser.userName + 'さんの読んだ論文'}" class="h2"></p>
+			<p th:text="#{home.title(${loginUser.userName})}" class="h2"></p>
 		</div>
 		<!-- 一覧表示 -->
 		<div class="mx-1">
