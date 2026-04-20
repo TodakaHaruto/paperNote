@@ -69,6 +69,6 @@ public class RegisterController {
 			log.error("論文情報登録でエラー", e);
 		}
 		
-		return "redirect:home/papers";
+		return "home/papers";
 	}
 }
