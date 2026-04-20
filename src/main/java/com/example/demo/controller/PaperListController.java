@@ -36,6 +36,6 @@ public class PaperListController {
 		//Modelに登録
 		model.addAttribute("paperList", paperList);
 		
-		return "/home/papers";
+		return "home/papers";
 	}
 }

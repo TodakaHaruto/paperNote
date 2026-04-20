@@ -23,7 +23,7 @@ public class HomeController {
 	public String getToread(@AuthenticationPrincipal org.springframework.security.core.userdetails.User loginUser, Model model) {
 		MUser user = userService.getLoginUser(loginUser.getUsername());
 		model.addAttribute("loginUser", user);
-		return "/home/toread";
+		return "home/toread";
 	}
 
 	//マイページ
@@ -32,6 +32,6 @@ public class HomeController {
 		MUser user = userService.getLoginUser(loginUser.getUsername());
 		model.addAttribute("loginUser", user);
 		//マイページを表示
-		return "/home/mypage";
+		return "home/mypage";
 	}
 }

@@ -27,7 +27,7 @@ public class MypageController {
 	@PostMapping(value = "/update", params = "display")
 	public String postUpdateMypage(Model model, @ModelAttribute UpdateForm form) {
 		model.addAttribute("updateForm", form);
-		return "/home/user-info/update";
+		return "home/user-info/update";
 	}
 	
 	//ユーザ情報の変更を実行
@@ -37,7 +37,7 @@ public class MypageController {
 		//バリデーションチェック
 		if(bindingResult.hasErrors()) {
 			//登録画面に戻る
-			return "/home/user-info/update";
+			return "home/user-info/update";
 		}
 		
 		userService.updateUserOne(form.getOldUserId(),
@@ -45,7 +45,7 @@ public class MypageController {
 								form.getUserName(),
 								form.getBirthday(),
 								form.getGender());
-		return "/home/user-info/complete";
+		return "home/user-info/complete";
 	}
 	
 	/* パスワードの更新画面を表示 */
@@ -54,7 +54,7 @@ public class MypageController {
 		PasswordForm passwordForm = new PasswordForm();
 		passwordForm.setUserId(loginUser.getUsername());
 		model.addAttribute("passwordForm", passwordForm);
-		return "/home/user-info/update-pass";
+		return "home/user-info/update-pass";
 	}
 	
 	/* パスワードを変更 */
@@ -63,11 +63,11 @@ public class MypageController {
 		//バリデーションチェック
 		if(bindingResult.hasErrors()) {
 			//登録画面に戻る
-			return "/home/user-info/update-pass";
+			return "home/user-info/update-pass";
 		}
 		//パスワード更新処理
 		userService.updatePass(form.getUserId(), form.getPassword());
 		
-		return "/home/user-info/complete";
+		return "home/user-info/complete";
 	}
 }

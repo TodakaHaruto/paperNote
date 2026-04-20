@@ -50,7 +50,7 @@ public class PaperDetailController {
 			MUser user = userService.getLoginUser(loginUser.getUsername());
 			if(!paper.getUserSerial().equals(user.getUserSerial())) {
 				//不正なアクセス
-				return "/prohibited";
+				return "prohibited";
 			}
 			
 			
@@ -76,7 +76,7 @@ public class PaperDetailController {
 			
 			
 			
-			return "/home/detail";
+			return "home/detail";
 		}
 		
 		
@@ -118,7 +118,7 @@ public class PaperDetailController {
 				log.error("論文更新表示でエラー", e);
 			}
 			
-			return "/home/paper/update";
+			return "home/paper/update";
 		}
 		
 		@PostMapping(value = "/detail/{paperId}", params = "delete")
@@ -131,7 +131,7 @@ public class PaperDetailController {
 			}
 			
 			
-			return "/home/paper/delete";
+			return "home/paper/delete";
 		}
 		
 		
@@ -145,7 +145,7 @@ public class PaperDetailController {
 				List<MPaper> paperList = paperService.getPapers(user);
 				model.addAttribute("paperList", paperList);
 				//登録画面に戻る
-				return "/home/paper/update";
+				return "home/paper/update";
 			}
 			
 			try {
@@ -154,6 +154,6 @@ public class PaperDetailController {
 				log.error("論文情報更新でエラー", e);
 			}
 
-			return "/home/paper/complete";
+			return "home/paper/complete";
 		}
 }

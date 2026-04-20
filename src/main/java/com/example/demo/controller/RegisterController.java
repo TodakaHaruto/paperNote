@@ -40,7 +40,7 @@ public class RegisterController {
 		List<MPaper> paperList = paperService.getPapers(user);
 		model.addAttribute("paperList", paperList);
 		model.addAttribute("paperDetailForm", new PaperDetailForm());
-		return "/home/register";
+		return "home/register";
 	}
 	
 	@PostMapping("/register")
@@ -53,7 +53,7 @@ public class RegisterController {
 			List<MPaper> paperList = paperService.getPapers(user);
 			model.addAttribute("paperList", paperList);
 			//登録画面に戻る
-			return "/home/register";
+			return "home/register";
 		}
 		
 		//ユーザ情報を取得
@@ -69,6 +69,6 @@ public class RegisterController {
 			log.error("論文情報登録でエラー", e);
 		}
 		
-		return "redirect:/home/papers";
+		return "redirect:home/papers";
 	}
 }
