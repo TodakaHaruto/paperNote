@@ -57,7 +57,8 @@ UIの面では、先行論文、後続論文を登録する際に選択中の論
 パスワード：test1234
 
 ## ER図
-![ER図](images/ER図.png)
+![ER図](images/ER図.png) </br>
+ER図の作成にはDraw.ioを使用しました。
 
 
 ## 今後の改善点
