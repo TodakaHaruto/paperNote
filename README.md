@@ -52,6 +52,7 @@ UIの面では、先行論文、後続論文を登録する際に選択中の論
 [作成アプリケーションはこちらから閲覧できます](https://papernote-production.up.railway.app/login "PaperNote")
 
 ## テストアカウント
+以下のアカウントを使用してwebアプリを閲覧することができます。</br>
 メールアドレス：test@example.com </br>
 パスワード：test1234
 
