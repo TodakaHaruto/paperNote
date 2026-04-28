@@ -12,7 +12,7 @@
 * Spring Boot
 * Thymeleaf
 * Bootstrap
-* PostgresSQL
+* PostgreSQL
 * Spring Security
 * MyBatis
 * Railway
